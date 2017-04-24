@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'base_head_tables.html' %}
+<body>
+      
+{% include 'base_state.html' %}
+
+<div id="container">
+{% include 'base_sidebar.html' %}
+  <div id="content">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+              <h5 class="widget-title">
+                <i class="icon-th-list">
+                </i>
+                {{path}}
+              </h5>
+            </div>
+		</div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="widget box">
+            <div class="widget-header">
+              <h4><i class="icon-reorder"></i> 分发记录列表</h4>
+              <div class="toolbar no-padding">
+                  <div class="btn-group">
+                      <span class="btn btn-xs" onclick="location.href='/node/distribute'">
+                        <i class="icon-share">
+                        </i>
+                        任务分发
+                      </span>
+                      <span class="btn btn-xs widget-collapse">
+                        <i class="icon-angle-down">
+                        </i>
+                      </span>
+                  </div>
+              </div>
+            </div>
+            <div class="widget-content no-padding">
+              <table class="table table-striped table-bordered table-hover table-checkable table-columnfilter datatable">
+                <thead>
+                  <tr>
+                    <th class="checkbox-column">
+                       <input type="checkbox" class="uniform">
+                    </th>
+                    <th class="align-center">分发ID</th>
+                    <th class="align-center">任务版本</th>
+					<th class="align-center">分发时间</th>
+                    <th class="align-center">任务统计(条)</th>
+					<th class="align-center">分发状态</th>
+					<th class="align-center">Crontab下载</th>
+					
+                  </tr>
+                </thead>
+                <tbody>
+				{%for distribute in distributelist%}
+                  <tr>
+                    <td class="checkbox-column">
+                          <input type="checkbox" class="uniform">
+                    </td>
+                    <td class="align-center">{{distribute.id}}</td>
+                    <td class="align-center">{{distribute.edition}}</td>
+                    <td class="align-center">{{distribute.updatetime}}</td>
+					<td class="align-center">{{distribute.crontotal}}</td>
+					{%if distribute.cronstate == True %}
+					<td class="align-center">
+                        <span class="label label-success">
+                            正常
+                        </span>
+                    </td>
+					<td class="align-center">
+                          <span class="btn-group">
+                            <a href="/disp/download/{{distribute.edition}}" class="btn btn-xs bs-tooltip" title="下载">
+                              <i class=" icon-download">
+                              </i>
+                            </a>
+                          </span>
+                    </td>
+					{% endif %}
+					
+                  </tr>
+                  </tr>
+				{%endfor%}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div> 
+  </div>
+</div>
+
+
+</body>
+
+
+</html>

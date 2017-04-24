@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'base_head_general.html' %}
+<body>
+      
+{% include 'base_state.html' %}
+
+<div id="container">
+{% include 'base_sidebar.html' %}
+  <div id="content">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+              <h5 class="widget-title">
+                <i class="icon-share">
+                </i>
+                {{path}}
+              </h5>
+            </div>
+		</div>
+    <!-- 2个统计图表 开始-->
+          <div class="row row-bg">
+            <div class="col-sm-6 col-md-6">
+              <div class="statbox widget box box-shadow">
+                <div class="widget-content">
+                  <div class="visual cyan">
+                    <i class="icon-share">
+                    </i>
+                  </div>
+                  <div class="title">
+                    发布次数
+                  </div>
+                  <div class="value">
+                    {{info.editionNum}}次
+                  </div>
+                  <a class="more" href="/disp/list">
+                    查看更多
+                    <i class="pull-right icon-angle-right">
+                    </i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <div class="statbox widget box box-shadow">
+                <div class="widget-content">
+                  <div class="visual cyan">
+                    <i class="icon-sitemap">
+                    </i>
+                  </div>
+                  <div class="title">
+                    集群节点
+                  </div>
+                  <div class="value">
+                   {{info.nodeNum}}台
+                  </div>
+                  <a class="more" href="/node/list">
+                   查看更多
+                    <i class="pull-right icon-angle-right">
+                    </i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 2个统计图表 结束--> 
+<!-- list start-->		
+    <div class="row">
+            <div class="col-md-6">
+			  <div class="widget box">
+					<div class="widget-header">
+					  <h4>
+						<i class="icon-reorder">
+						</i>
+						任务分发
+					  </h4>
+					</div>
+                <div class="widget-content">
+                  <div class="alert alert-info">
+                    任务分为两个步骤：①数据库生成crontab配置文件并检查语法②分发至指定Job服务器
+                  </div>
+                  <h3>
+                    操作进度条
+                  </h3>
+                  <div class="progress progress-striped active">
+                    <div id="progress" class="progress-bar progress-bar-success" style="width: 10%">
+                    </div>
+                  </div>
+                  <div id="StartSuccess" class="alert alert-success fade in" style="display:none">
+                    <i class="icon-remove close" data-dismiss="alert">
+                    </i>
+                    <strong>
+                      操作成功!
+                    </strong>
+                    任务配置文件已经生成，下一步可分发任务
+                  </div>
+                  <div id="StartDanger" class="alert alert-danger fade in" style="display:none">
+                    <i class="icon-remove close" data-dismiss="alert">
+                    </i>
+                    <strong>
+                      操作失败!
+                    </strong>
+                    任务配置文件生成失败，请查看任务列表有无异常
+                  </div>
+                  <div id="endSuccess" class="alert alert-success fade in" style="display:none">
+                    <i class="icon-remove close" data-dismiss="alert">
+                    </i>
+                    <strong>
+                      操作成功!
+                    </strong>
+                    任务已经成功分发！
+                  </div>
+                  <div id="endDanger" class="alert alert-danger fade in" style="display:none">
+                    <i class="icon-remove close" data-dismiss="alert">
+                    </i>
+                    <strong>
+                      操作失败!
+                    </strong>
+                    任务分发失败，请查看节点是否正常！
+                  </div>
+                  <p class="padding-top-10px">
+                    <button id="Start" class="btn bs-popover" data-trigger="hover" data-placement="top"
+                    data-content=" 生成crontab配置文件并进行语法检查" data-original-title="第一步">
+                      第一步
+                    </button>
+                    <button id="end" class="btn bs-popover" data-trigger="hover" data-placement="top"
+                    data-content=" 分发计划任务至指定服务器!" data-original-title="第二步" disabled="">
+                      第二步
+                    </button>
+                  </p>
+			    </div>
+			  </div>
+            </div>
+		  <!-- list end-->
+		<div class="col-md-6">
+              <div class="widget">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    最近更新
+                  </h4>
+                </div>
+                <div class="widget-content">
+                  <div class="well">
+                    分发日期：{{lastup.updatetime}}
+                  </div>
+                  <div class="well">
+                    任务统计：{{lastup.crontotal}}条
+                  </div>
+                  <div class="well">
+                    任务版本：{{lastup.edition}}
+                  </div>
+                </div>
+              </div>
+		</div>
+	</div> 
+  </div>
+  
+</div>
+
+
+</body>
+<script type="text/javascript"> 
+   $("#Start").click(function(){
+			var operation = {'operation':'create'}
+			$("#Start").toggleClass("disabled");
+            $.post('/disp/cronfile',operation,function(data, status){
+               $("#progress").html(data);
+	if (data=='Success')
+	{
+	document.getElementById('progress').style.width = '50%';
+	$('#end').removeAttr("disabled");
+	document.getElementById("StartSuccess").style="block";	
+	}
+	
+	else
+	{
+	document.getElementById('progress').style.width = '20%';
+	document.getElementById("StartDanger").style="block";
+	document.getElementById('progress').className = 'progress-bar progress-bar-warning';	
+	}			   
+            })
+
+			
+   }); 
+   $("#end").click(function(){
+			var operation = {'operation':'end'}
+			$("#end").toggleClass("disabled");
+            $.post('/disp/sendfile',operation,function(data, status){
+               $("#progress").html(data);
+	if (data=='Success')
+	{
+	document.getElementById('progress').style.width = '100%';
+	document.getElementById("StartSuccess").style.display="none";	
+	document.getElementById("endSuccess").style.display="block";	
+	}
+	
+	else
+	{
+	document.getElementById('progress').style.width = '50%';
+	document.getElementById('progress').className = 'progress-bar progress-bar-warning';
+	document.getElementById("StartSuccess").style.display="none";	
+	document.getElementById("endDanger").style.display="block";	
+	}	
+            })
+   });   
+</script>
+
+</html>

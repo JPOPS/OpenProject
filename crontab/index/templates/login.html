@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WebCron 登录</title>
+<link rel="stylesheet" type="text/css" href="/css/login_style.css" />
+<link rel="stylesheet" type="text/css" href="/css/login_body.css"/> 
+</head>
+<body>
+<div class="container">
+	<section id="content">
+		<form method= "post" action="/login" id="login">
+			<h1>WebCron</h1>
+			<div>
+				<input type="text" placeholder="Username" name="username" value="{{ info.username }}" required="" id="username" />
+			</div>
+			<input type="hidden" name="next" value="{{ nextpag }}" />
+			<div>
+				<input type="password" placeholder="Password" name="password" required="" id="password" />
+			</div>
+			{{ info.error }}
+			 <div>
+				<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>
+			</div> 
+			<div>
+			 <input type="submit" value="登录" />
+			</div>
+		</form><!-- form -->
+		 <div class="button">
+			<span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>
+			WebCron 版权 Copyright © 2016-2017  *** All Rights Reserved	
+		</div> <!-- button -->
+	</section><!-- content -->
+</div>
+<!-- container -->
+</body>
+</html>

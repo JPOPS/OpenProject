@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'base_head_tables.html' %}
+<body>
+      
+{% include 'base_state.html' %}
+
+<div id="container">
+{% include 'base_sidebar.html' %}
+  <div id="content">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+              <h5 class="widget-title">
+                <i class="icon-th-list">
+                </i>
+                {{path}}
+              </h5>
+            </div>
+		</div>
+    <!-- 2个统计图表 开始-->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    节点说明
+                  </h4>
+                  <div class="toolbar">
+                    <div class="btn-group">
+                      <span class="btn btn-xs widget-collapse">
+                        <i class="icon-angle-down">
+                        </i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget-content">
+                  <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                          href="#collapseOne">
+                            CronAdmin节点说明
+                          </a>
+                        </h3>
+                      </div>
+                      <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                          CronAdmin节点具有图形界面管理、分发功能。具体负责计划任务的增、删、改、查。分发任务至指定节点，
+                          任务的备份、快速恢复、统计、分析等
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                          href="#collapseTwo">
+                            CronJob节点说明
+                          </a>
+                        </h3>
+                      </div>
+                      <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          CronJob节点具有执行计划任务的功能。具体负责计划任务的执行，并记录运行结果。
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                          href="#collapseThree">
+                            集群架构
+                          </a>
+                        </h3>
+                      </div>
+                      <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          CronAdmin主动分发 CronAdmin根据节点的存活把任务自动分发给可用的节点。
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 2个统计图表 结束--> 
+<!-- list start-->		
+        <div class="row">
+            <div class="col-md-6">
+              <div class="widget box">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    节点列表
+                  </h4>
+                  <div class="toolbar no-padding">
+                    <div class="btn-group">
+                      <span class="btn btn-xs widget-collapse">
+                        <i class="icon-angle-down">
+                        </i>
+                      </span>
+                      <span class="btn btn-xs" onclick="location.href='/node/add'">
+                        <i class="icon-plus">
+                        </i>
+                        添加节点
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget-content">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>
+                          节点ID
+                        </th>
+                        <th>
+                         节点IP
+                        </th>
+                        <th class="hidden-xs">
+                          连接端口
+                        </th>
+                        <th>
+                          操作
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+					{%for node in nodes%}
+                      <tr>
+                        <td>
+                          {{node.id}}
+                        </td>
+                        <td>
+                          {{node.nodeip}}
+                        </td>
+                        <td class="hidden-xs">
+                          {{node.nodeport}}
+                        </td>
+					<td>
+                          <span class="btn-group">
+                            <a href="/node/edit/{{node.id}}/" class="btn btn-xs bs-tooltip" title="修改">
+                              <i class="icon-pencil">
+                              </i>
+                            </a>
+                            <a href="/node/delete/{{node.id}}/" class="btn btn-xs bs-tooltip" title="删除">
+                              <i class="icon-trash">
+                              </i>
+                            </a>
+                          </span>
+                    </td>
+                      </tr>
+					  {%endfor%}
+                    </tbody>
+                  </table>
+                </div>
+             </div>
+            </div>
+            <div class="col-md-6">
+              <div class="widget box">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    节点状态 
+                  </h4>
+                  <div class="toolbar no-padding">
+                    <div class="btn-group">
+                      <span class="btn btn-xs widget-collapse">
+                        <i class="icon-angle-down">
+                        </i>
+                      </span>
+                      <span class="btn btn-xs" onclick="location.href='/node/testing'">
+                        <i class="icon-legal">
+                        </i>
+                        检测节点
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget-content">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>
+                          节点IP
+                        </th>
+                        <th>
+                          运行状态
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+					{%for nodeip,state in nodestate%}
+                      <tr>
+                        <td>
+                          {{nodeip}}
+                        </td>
+                        <td>
+						{% if state == 'Success1' %}
+                          <span class="label label-success">
+                            正常
+                          </span>
+                          <span class="label label-primary">
+                            主
+                          </span> 
+						{% elif state == 'Success0' %}
+                          <span class="label label-success">
+                            正常
+                          </span>
+						{% elif state == 'failed' %}
+                          <span class="label label-danger">
+                            异常
+                          </span>
+						{% else %}
+                          <span class="label label-default">
+                            未检测
+                          </span>
+						{% endif %}
+                        </td>
+                      </tr>
+					  {%endfor%}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+    </div>
+		  <!-- list end-->
+</div> 
+  </div>
+</div>
+
+
+</body>
+
+
+</html>

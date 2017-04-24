@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'base_head_wizard.html' %}
+
+<body>
+      
+{% include 'base_state.html' %}
+
+<div id="container">
+{% include 'base_sidebar.html' %}
+  <div id="content">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+              <h5 class="widget-title">
+                <i class="icon-list-ol">
+                </i>
+                {{path}}
+              </h5>
+            </div>
+		</div>
+<!-- 步骤添加 start-->		
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget box" id="form_wizard">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    步骤添加任务 -
+                    <span class="step-title">
+                      Step 1 of 3
+                    </span>
+                  </h4>
+                  <div class="toolbar no-padding">
+                    <div class="btn-group">
+                      <span class="btn btn-xs widget-collapse">
+                        <i class="icon-angle-down">
+                        </i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget-content">
+                  <form class="form-horizontal" id="sample_form" method="POST" action="/task/addtask">
+                    <div class="form-wizard">
+                      <div class="form-body">
+                        <ul class="nav nav-pills nav-justified steps">
+                          <li>
+                            <a href="#tab1" data-toggle="tab" class="step">
+                              <span class="number">
+                                1
+                              </span>
+                              <span class="desc">
+                                <i class="icon-ok">
+                                </i>
+                                任务描述
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#tab2" data-toggle="tab" class="step">
+                              <span class="number">
+                                2
+                              </span>
+                              <span class="desc">
+                                <i class="icon-ok">
+                                </i>
+                                任务表达式
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#tab4" data-toggle="tab" class="step">
+                              <span class="number">
+                                3
+                              </span>
+                              <span class="desc">
+                                <i class="icon-ok">
+                                </i>
+                                提交
+                              </span>
+                            </a>
+                          </li>
+                        </ul>
+                        <div id="bar" class="progress progress-striped" role="progressbar">
+                          <div class="progress-bar progress-bar-success">
+                          </div>
+                        </div>
+                        <div class="tab-content">
+                          <div class="alert alert-danger hide-default">
+                            <button class="close" data-dismiss="alert">
+                            </button>
+                            检测被高亮显示的项目！
+                          </div>
+                          <div class="alert {{alert}}">
+                            <button class="close" data-dismiss="alert">
+                            </button>
+                            提交成功! :-)
+                          </div>
+                          <div class="tab-pane active" id="tab1">
+                            <h3 class="block padding-bottom-10px">
+                              请填写您的任务详细资料
+                            </h3>
+                            <div class="form-group">
+                              <label class="control-label col-md-3">
+                                负责人/部门
+                                <span class="required">
+                                  *
+                                </span>
+                              </label>
+                              <div class="col-md-4">
+                                <select name="personal" id="country_list" class="select2 full-width-fix required">
+                                  <option value="">
+                                  </option>
+								  {%for user in users %}
+                                  <option value="{{user.username}}">
+                                    {{user.username}}
+                                  </option>
+								 {% endfor %}
+                                </select>
+								<span class="help-block">
+                                  选择负责人/部门
+                                </span>
+                              </div>							  
+                            </div>								  
+                            <div class="form-group">
+                              <label class="control-label col-md-3">
+                                功能描述
+                                <span class="required">
+                                  *
+                                </span>
+                              </label>
+                              <div class="col-md-4">
+                                <input type="text" class="form-control required" name="describe" />
+                                <span class="help-block">
+                                  例如：每天直播辅导课程发送到服务推送队列脚本
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane" id="tab2">
+                            <h3 class="block padding-bottom-10px">
+                              请填写您的任务描述
+                            </h3>
+                            <div class="form-group">
+                              <label class="control-label col-md-2">
+                                Cron表达式
+                                <span class="required">
+                                  *
+                                </span>
+                              </label>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control required" name="expression" />
+                                <span class="help-block">
+                                  例如：*/5 * * * *
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane" id="tab4">
+                            <h3 class="block padding-bottom-10px">
+                              确认您的信息
+                            </h3>
+                            <h4 class="form-section">
+                              任务描述
+                            </h4>
+                            <div class="form-group">
+                              <label class="control-label col-md-2">
+                                负责人/部门:
+                              </label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="personal">
+                                </p>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-2">
+                                功能描述:
+                              </label>
+                              <div class="col-md-4">
+                                <p class="form-control-static" data-display="describe">
+                                </p>
+                              </div>
+                            </div>
+                            <h4 class="form-section">
+                              Cron表达式
+                            </h4>
+                            <div class="form-group">
+                              <label class="control-label col-md-2">
+                                表达式:
+                              </label>
+                              <div class="col-md-12">
+                                <p class="form-control-static" data-display="expression">
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-actions fluid">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="col-md-offset-3 col-md-9">
+                              <a href="javascript:void(0);" class="btn button-previous">
+                                <i class="icon-angle-left">
+                                </i>
+                                上一步
+                              </a>
+                              <a href="javascript:void(0);" class="btn btn-primary button-next">
+                                下一步
+                                <i class="icon-angle-right">
+                                </i>
+                              </a>
+                              <a href="javascript:void(0);" class="btn btn-success button-submit">
+                                提交
+                                <i class="icon-angle-right">
+                                </i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- 步骤添加 end-->		  
+	</div>
+  </div>
+</div>
+
+
+</body>
+
+
+</html>

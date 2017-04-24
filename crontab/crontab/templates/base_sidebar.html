@@ -1,0 +1,255 @@
+<link rel="icon" href="/img/favicon.ico" type="image/icon" />
+      <div id="sidebar" class="sidebar-fixed">
+        <div id="sidebar-content">
+          <form class="sidebar-search">
+            <div class="input-box">
+              <button type="submit" class="submit">
+                <i class="icon-search">
+                </i>
+              </button>
+              <span>
+                <input type="text" placeholder="搜索...">
+              </span>
+            </div>
+          </form>
+          <ul id="nav">
+            {% if menuif == 1 %}<li class="current">{% else %}<li>{% endif %}
+              <a href="/">
+                <i class="icon-dashboard">
+                </i>
+                首页
+              </a>
+            </li>
+           {% if menuif_0 == 1 %}<li class="current open">{% else %}<li>{% endif %}
+              <a href="javascript:void(0);">
+                <i class="icon-columns">
+                </i>
+               分发管理
+              </a>
+              <ul class="sub-menu">
+                {% if menuif_0_1 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                  <a href="/disp/distribute">
+					<i class="icon-angle-right">
+					</i>
+					<i class=" pull-right icon-share">
+					</i>
+                    任务分发
+                  </a>
+                </li>
+                {% if menuif_0_2 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                  <a href="/disp/list">
+					<i class="icon-angle-right">
+					</i>
+                    <i class="pull-right icon-th-list">
+                    </i>
+                    分发记录
+                  </a>
+                </li>
+              </ul>
+            </li>
+           {% if menuif_1 == 1 %}<li class="current open">{% else %}<li>{% endif %}
+              <a href="javascript:void(0);">
+                <i class="icon-sitemap">
+                </i>
+               节点管理
+              </a>
+              <ul class="sub-menu">
+                {% if menuif_1_1 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                  <a href="/node/add">
+					<i class="icon-angle-right">
+					</i>
+                    <i class=" pull-right icon-plus-sign-alt">
+                    </i>
+                    节点添加
+                  </a>
+                </li>
+                {% if menuif_1_2 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                  <a href="/node/list">
+					<i class="icon-angle-right">
+					</i>
+                    <i class=" pull-right icon-th-list">
+                    </i>
+                    节点列表
+                  </a>
+                </li>
+              </ul>
+            {% if menuif_2 == 1 %}<li class="current open">{% else %}<li>{% endif %}
+              <a href="javascript:void(0);">
+                <i class="icon-table">
+                </i>
+                任务管理
+              </a>
+              <ul class="sub-menu">	
+                {% if menuif_2_1 == 1 %}<li class="current">{% else %}<li class="open-default" >{% endif %}
+                  <a href="javascript:void(0);">
+                    <i class=" icon-plus-sign-alt">
+                    </i>
+                    任务添加
+                    <span class="arrow">
+                    </span>
+                  </a>
+                  <ul class="sub-menu">
+                    {% if menuif_2_1_1 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                      <a href="/task/addtask">
+                        <i class="icon-list-ol">
+                        </i>
+                        步骤添加
+                      </a>
+                    </li>
+                    {% if menuif_2_1_2 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                      <a href="/task/addstask">
+                        <i class="icon-tasks">
+                        </i>
+                        批量添加
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                {% if menuif_2_2 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                  <a href="/task/tasklist">
+					<i class="icon-angle-right">
+					</i>
+                    <i class="pull-right icon-th-list">
+                    </i>                    
+					任务列表
+                  </a>
+                </li>
+                {% if menuif_2_3 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                  <a href="/task/recycle">
+					<i class="icon-angle-right">
+					</i>
+                    <i class=" pull-right icon-trash">
+                    </i>
+                    回收站
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {% if menuif_3 == 1 %}<li class="current open">{% else %}<li>{% endif %}
+              <a href="javascript:void(0);">
+                <i class="icon-picture">
+                </i>
+                图表 &amp; 统计
+              </a>
+			  <ul class="sub-menu">
+                {% if menuif_3_1 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                  <a href="/grap/interval">
+					<i class="icon-angle-right">
+					</i>
+                    <i class=" pull-right icon-bar-chart">
+                    </i>
+                    时间分布
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {% if menuif_4 == 1 %}<li class="current open">{% else %}<li>{% endif %}
+              <a href="javascript:void(0);">
+                <i class="icon-book">
+                </i>
+                监控 &amp; 日志
+              </a>
+              <ul class="sub-menu">
+                {% if menuif_4_1 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                  <a href="/notes/oplist">
+					<i class="icon-angle-right">
+					</i>
+                    <i class="pull-right icon-wrench">
+                    </i>
+                    操作日志
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+					<i class="icon-angle-right">
+					</i>
+                    <i class=" pull-right icon-bell-alt">
+                    </i>
+                    告警日志
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {% if menuif_5 == 1 %}<li class="current open">{% else %}<li>{% endif %}
+              <a href="javascript:void(0);">
+                <i class="icon-cogs">
+                </i>
+                系统设置
+              </a>
+              <ul class="sub-menu">
+                {% if menuif_5_1 == 1 %}<li class="current">{% else %}<li>{% endif %}
+                  <a href="/users/userlist">
+					<i class="icon-angle-right">
+					</i>
+                    <i class=" pull-right icon-group">
+                    </i>
+                    用户管理
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+					<i class="icon-angle-right">
+					</i>
+                    <i class=" pull-right icon-upload">
+                    </i>
+                    更新记录
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+					<i class="icon-angle-right">
+					</i>
+                    <i class=" pull-right icon-hospital">
+                    </i>
+                    日期日历
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="sidebar-title">
+            <span>
+              提示
+            </span>
+          </div>
+          <ul class="notifications demo-slide-in">
+            <li style="display: none;">
+              <div class="col-left">
+                <span class="label label-info">
+                  <i class="icon-comments-alt">
+                  </i>
+                </span>
+              </div>
+              <div class="col-right with-margin">
+                <span class="message">
+                  <strong>
+                    欢迎
+                  </strong>
+                  使用WebCron v1.1版
+                </span>
+                <span class="time">
+                  几分钟之前
+                </span>
+              </div>
+            </li>
+          </ul>
+          <div class="sidebar-widget align-center">
+            <div class="btn-group" data-toggle="buttons" id="theme-switcher">
+              <label class="btn active">
+                <input type="radio" name="theme-switcher" data-theme="bright">
+                <i class="icon-sun">
+                </i>
+                
+              </label>
+              <label class="btn">
+                <input type="radio" name="theme-switcher" data-theme="dark">
+                <i class="icon-moon">
+                </i>
+                
+              </label>
+            </div>
+          </div>
+        </div>
+        <div id="divider" class="resizeable">
+        </div>
+      </div>

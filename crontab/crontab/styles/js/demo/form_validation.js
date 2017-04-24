@@ -1,0 +1,1 @@
+"use strict";$(document).ready(function(){$.extend($.validator.defaults,{invalidHandler:function(c,a){var d=a.numberOfInvalids();if(d){var b=d==1?"您错过了1 个项目，已经被高亮显示.":"您错过 "+d+" 个项目. 他们已经被高亮显示.";noty({text:b,type:"error",timeout:2000})}}});$("#validate-1").validate();$("#validate-2").validate();$("#validate-3").validate();$("#validate-4").validate()});

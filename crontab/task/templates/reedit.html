@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'base_head_tables.html' %}
+<body>
+      
+{% include 'base_state.html' %}
+
+<div id="container">
+{% include 'base_sidebar.html' %}
+  <div id="content">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+              <h5 class="widget-title">
+                <i class="icon-retweet">
+                </i>
+                {{path}}
+              </h5>
+            </div>
+		</div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget box">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    任务恢复
+                  </h4>
+                </div>
+                <div class="widget-content">
+                  <form class="form-horizontal row-border" method="POST" action="/task/reedit/{{cron.id}}/">
+                    <div class="alert alert-info fade in">
+                      <i class="icon-remove close" data-dismiss="alert">
+                      </i>
+                      在这里可以恢复任务
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-2 control-label">
+                        任务ID:
+                      </label>
+                      <div class="col-md-4">
+                        <input type="text" name="id" class="form-control" readonly value="{{cron.id}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-2 control-label">
+                        负责人/部门:
+                      </label>
+                      <div class="col-md-10">
+                        <input class="form-control" type="text" name="personal" value="{{cron.personal}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-2 control-label">
+                        功能描述:
+                      </label>
+                      <div class="col-md-10">
+                        <input class="form-control" type="text" name="describe" value="{{cron.describe}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-2 control-label">
+                        Cron表达式:
+                      </label>
+                      <div class="col-md-10">
+                        <input class="form-control" type="text" name="expression" value="{{cron.expression}}">
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <input type="submit" value="恢复" class="btn btn-primary pull-right">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+	</div> 
+  </div>
+</div>
+
+
+</body>
+
+
+</html>

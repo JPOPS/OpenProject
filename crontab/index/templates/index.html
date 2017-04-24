@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">  
+
+{% include 'base_head.html' %}
+  
+  <body>
+{% include 'base_state.html' %}
+    <div id="container">
+{% include 'base_sidebar.html' %}
+      <div id="content">
+        <div class="container">
+          <div class="page-header">
+            <div class="page-title">
+              <h3>
+                首页
+              </h3>
+              <span>
+                {{greeting}}, 管理员！
+              </span>
+            </div>
+          </div>
+          <div class="row row-bg">
+            <div class="col-sm-6 col-md-3">
+              <div class="statbox widget box box-shadow">
+                <div class="widget-content">
+                  <div class="visual cyan">
+                    <i class="icon-list-ol">
+                    </i>
+                  </div>
+                  <div class="title">
+                    计划任务
+                  </div>
+                  <div class="value">
+                    {{info.cronNum}}条
+                  </div>
+                  <a class="more" href="javascript:void(0);">
+                    查看更多
+                    <i class="pull-right icon-angle-right">
+                    </i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <div class="statbox widget box box-shadow">
+                <div class="widget-content">
+                  <div class="visual cyan">
+                    <i class="icon-sitemap">
+                    </i>
+                  </div>
+                  <div class="title">
+                    集群节点
+                  </div>
+                  <div class="value">
+                   {{info.nodeNum}}台
+                  </div>
+                  <a class="more" href="javascript:void(0);">
+                   查看更多
+                    <i class="pull-right icon-angle-right">
+                    </i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3 hidden-xs">
+              <div class="statbox widget box box-shadow">
+                <div class="widget-content">
+                  <div class="visual cyan">
+                    <i class="icon-share">
+                    </i>
+                  </div>
+                  <div class="title">
+                    发布次数
+                  </div>
+                  <div class="value">
+                    {{info.editionNum}}次
+                  </div>
+                  <a class="more" href="javascript:void(0);">
+                    查看更多
+                    <i class="pull-right icon-angle-right">
+                    </i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3 hidden-xs">
+              <div class="statbox widget box box-shadow">
+                <div class="widget-content">
+                  <div class="visual green">
+                    <i class="icon-time">
+                    </i>
+                  </div>
+                  <div class="title">
+                    系统运行
+                  </div>
+                  <div class="value">
+                    {{info.Runningtime}}天
+                  </div>
+                  <a class="more" href="javascript:void(0);">
+                   查看更多
+                    <i class="pull-right icon-angle-right">
+                    </i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    快捷菜单
+                  </h4>
+                </div>
+                <div class="widget-content">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <a href="/disp/distribute" class="btn btn-icon input-block-level">
+                        <i class="icon-share">
+                        </i>
+                        <div>
+                          任务分发
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="/task/addtask" class="btn btn-icon input-block-level">
+                        <i class="icon-list-ol">
+                        </i>
+                        <div>
+                          任务步骤添加
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="/task/addstask" class="btn btn-icon input-block-level">
+                        <i class="icon-tasks">
+                        </i>
+                        <div>
+                          任务批量添加
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="/users/userlist" class="btn btn-icon input-block-level">
+                        <i class="icon-group">
+                        </i>
+                        <div>
+                          用户管理
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <a href="/disp/list" class="btn btn-icon input-block-level">
+                        <i class="icon-th-list">
+                        </i>
+                        <div>
+                          分发记录
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="/task/tasklist" class="btn btn-icon input-block-level">
+                        <i class="icon-barcode">
+                        </i>
+                        <div>
+                          任务列表
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="/task/recycle" class="btn btn-icon input-block-level">
+                        <i class="icon-bar-chart">
+                        </i>
+                        <div>
+                          任务回收站
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="/grap/interval" class="btn btn-icon input-block-level">
+                        <i class="icon-bar-chart">
+                        </i>
+                        <div>
+                          时间分布
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'base_head_charts.html' %}
+
+<body>
+      
+{% include 'base_state.html' %}
+
+<div id="container">
+{% include 'base_sidebar.html' %}
+  <div id="content">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+              <h5 class="widget-title">
+                <i class="icon-bar-chart">
+                </i>
+                {{path}}
+              </h5>
+            </div>
+		</div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget box">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    任务时间分布
+                  </h4>
+                  <div class="toolbar no-padding">
+                    <div class="btn-group">
+                      <span class="btn btn-xs widget-collapse">
+                        <i class="icon-angle-down">
+                        </i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget-content">
+                  <ul class="stats">
+				 {%for hours,key,spt in hourspt1%}
+                    <li>
+                      <div class="circular-chart demo-reload" data-percent="{{spt}}" data-bar-color="{% if spt > 40 %}#8fc556{% elif spt > 40 and spt < 66 %}{% else %}#e25856{% endif %}">
+                        <span>
+                          {{spt}}
+                        </span>
+                      </div>
+                      <a href="/grap/hourscat/{{hours}}/" class="title">
+                         <i class="icon-tasks">
+                        </i>                       
+						任务数：{{key}}<br>
+                        <i class="icon-time">
+                        </i>
+						时间点：{{hours}}点
+                      </a>
+                    </li>
+					{%endfor%}
+                  </ul>
+                </div>
+                <div class="widget-content">
+                  <ul class="stats">
+				 {%for hours,key,spt in hourspt2%}
+                    <li>
+                      <div class="circular-chart demo-reload" data-percent="{{spt}}" data-bar-color="{% if spt > 40 %}#8fc556{% elif spt > 40 and spt < 66 %}{% else %}#e25856{% endif %}">
+                        <span>
+                          {{spt}}
+                        </span>
+                      </div>
+                      <a href="/grap/hourscat/{{hours}}/" class="title">
+                         <i class="icon-tasks">
+                        </i>                       
+						任务数：{{key}}<br>
+                        <i class="icon-time">
+                        </i>
+						时间点：{{hours}}点
+                      </a>
+                    </li>
+					{%endfor%}
+                  </ul>
+                </div>
+                <div class="widget-content">
+                  <ul class="stats">
+				 {%for hours,key,spt in hourspt3%}
+                    <li>
+                      <div class="circular-chart demo-reload" data-percent="{{spt}}" data-bar-color="{% if spt > 40 %}#8fc556{% elif spt > 40 and spt < 66 %}{% else %}#e25856{% endif %}">
+                        <span>
+                          {{spt}}
+                        </span>
+                      </div>
+                      <a href="/grap/hourscat/{{hours}}/" class="title">
+                         <i class="icon-tasks">
+                        </i>                       
+						任务数：{{key}}<br>
+                        <i class="icon-time">
+                        </i>
+						时间点：{{hours}}点
+                      </a>
+                    </li>
+					{%endfor%}
+                  </ul>
+                </div>				
+                <div class="divider">
+                </div>
+              </div>
+            </div>
+          </div>  
+	</div> 
+
+  </div>
+</div>
+
+
+</body>
+
+
+</html>

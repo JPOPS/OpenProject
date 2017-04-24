@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'base_head_tables.html' %}
+<body>
+      
+{% include 'base_state.html' %}
+
+<div id="container">
+{% include 'base_sidebar.html' %}
+  <div id="content">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+              <h5 class="widget-title">
+                <i class="icon-trash">
+                </i>
+                {{path}}
+              </h5>
+            </div>
+		</div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="widget box">
+            <div class="widget-header">
+              <h4><i class="icon-reorder"></i> CronTab 回收站列表</h4>
+              <div class="toolbar no-padding">
+                  <div class="btn-group">
+                      <span class="btn btn-xs" onclick="location.href='/task/redeleteall'">
+                        <i class="icon-trash">
+                        </i>
+                        清空回收站
+                      </span>
+                      <span class="btn btn-xs widget-collapse">
+                        <i class="icon-angle-down">
+                        </i>
+                      </span>
+                  </div>
+              </div>
+            </div>
+            <div class="widget-content no-padding">
+              <table class="table table-striped table-bordered table-hover table-checkable table-columnfilter datatable">
+                <thead>
+                  <tr>
+                    <th>任务ID</th>
+                    <th>负责人</th>
+                    <th>功能描述</th>
+                    <th>Cron表达式</th>
+					<th>删除时间</th>
+					<th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+				{%for task in tasklist%}
+                  <tr>
+                    <td>{{task.id}}</td>
+                    <td>{{task.personal}}</td>
+                    <td>{{task.describe}}</td>
+					<td>{{task.expression}}</td>
+					<td>{{task.date}}</td>
+					<td class="align-center">
+                          <span class="btn-group">
+                            <a href="/task/reedit/{{task.id}}/" class="btn btn-xs bs-tooltip" title="恢复">
+                              <i class="icon-refresh">
+                              </i>
+                            </a>
+                            <a href="/task/redelete/{{task.id}}/" class="btn btn-xs bs-tooltip" title="删除">
+                              <i class="icon-trash">
+                              </i>
+                            </a>
+                          </span>
+                    </td>
+                  </tr>
+                  </tr>
+				{%endfor%}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div> 
+  </div>
+</div>
+
+
+</body>
+
+
+</html>

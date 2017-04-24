@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'base_head_wizard.html' %}
+
+<body>
+      
+{% include 'base_state.html' %}
+
+<div id="container">
+{% include 'base_sidebar.html' %}
+  <div id="content">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+              <h5 class="widget-title">
+                <i class="icon-tasks">
+                </i>
+                {{path}}
+              </h5>
+            </div>
+		</div>  
+<!-- 多条添加 start-->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget box">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    批量添加任务
+                  </h4>
+                </div>
+                <div class="widget-content">
+                  <form class="form-horizontal row-border" method="POST" action="/task/addstask">
+                    <div class="alert alert-warning fade in">
+                      <i class="icon-remove close" data-dismiss="alert">
+                      </i>
+                      批量添加计划任务必须按照以下提示格式填写！(注意空格)
+                    </div>				
+						<div class="form-group"><div class="col-md-10"><textarea rows="3" cols="5" name="batchtask" class="form-control required" style="height: 185px;"></textarea>
+                        <span class="help-block">
+                           #负责人-任务描述<br>
+						   */5 * * * * /usr/local/php56/bin/php /home/www/api.beta.xueersi.com/shell.php AppPushService Queue >> /home/crontablogs/monitorTimely.log
+                        </span>						
+						</div> </div>                  
+					<div class="form-actions">
+                      <input type="submit" value="批量添加" class="btn btn-primary pull-right">
+                    </div>                
+				  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- 多条添加 end-->		  
+	</div>
+  </div>
+</div>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+{% include 'base_head_tables.html' %}
+<body>
+      
+{% include 'base_state.html' %}
+
+<div id="container">
+{% include 'base_sidebar.html' %}
+  <div id="content">
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+              <h5 class="widget-title">
+                <i class="icon-user-md">
+                </i>
+                {{path}}
+              </h5>
+            </div>
+		</div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget box">
+                <div class="widget-header">
+                  <h4>
+                    <i class="icon-reorder">
+                    </i>
+                    用户修改
+                  </h4>
+                </div>
+                <div class="widget-content">
+                  <form class="form-horizontal row-border" id="validate-1" method="POST" action="/users/useradd">
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">
+                        用户id
+                        <span class="required">
+                          *
+                        </span>
+                      </label>
+                      <div class="col-md-9">
+                        <input type="text" name="id" class="form-control required" readonly value="{{users.id}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">
+                        用户姓名
+                        <span class="required">
+                          *
+                        </span>
+                      </label>
+                      <div class="col-md-9">
+                        <input type="text" name="username" class="form-control required" value="{{users.username}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">
+                        用户邮件
+                        <span class="required">
+                          *
+                        </span>
+                      </label>
+                      <div class="col-md-9">
+                        <input type="text" name="email" class="form-control required email" value="{{users.email}}">
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <input type="submit" value="修改" class="btn btn-primary pull-right">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+	</div> 
+  </div>
+</div>
+
+
+</body>
+
+
+</html>
